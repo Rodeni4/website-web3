@@ -1,3 +1,20 @@
+.connectWalletWrap {
+  position: static;
+}
+
+.connectedWalletWrap {
+  position: fixed;
+  top: 18px;
+  right: 28px;
+  z-index: 50;
+}
+
+.connectedWalletHidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
 .connectButton {
   position: relative;
   min-width: 178px;
@@ -125,5 +142,26 @@
   .connectButton,
   .connectButton::after {
     animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .connectedWalletWrap {
+    top: 14px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .connectedWalletWrap :global(button) {
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .connectedWalletWrap :global(button *) {
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1;
   }
 }

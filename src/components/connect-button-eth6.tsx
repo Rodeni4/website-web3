@@ -48,7 +48,11 @@ export function ConnectButtonEth6() {
 
   return (
     <div ref={containerRef}>
-      {isConnected ? (
+      <div
+        className={`${styles.connectedWalletWrap} ${
+          isConnected ? "" : styles.connectedWalletHidden
+        }`}
+      >
         <ConnectButton
           accountStatus="full"
           showBalance={{
@@ -56,23 +60,26 @@ export function ConnectButtonEth6() {
             largeScreen: true,
           }}
         />
-      ) : (
-        <ConnectButton.Custom>
-          {({ mounted, authenticationStatus, openConnectModal }) => {
-            const ready = mounted && authenticationStatus !== "loading";
+      </div>
+      {!isConnected && (
+        <div className={styles.connectWalletWrap}>
+          <ConnectButton.Custom>
+            {({ mounted, authenticationStatus, openConnectModal }) => {
+              const ready = mounted && authenticationStatus !== "loading";
 
-            return (
-              <button
-                type="button"
-                className={styles.connectButton}
-                disabled={!ready}
-                onClick={openConnectModal}
-              >
-                Connect Wallet
-              </button>
-            );
-          }}
-        </ConnectButton.Custom>
+              return (
+                <button
+                  type="button"
+                  className={styles.connectButton}
+                  disabled={!ready}
+                  onClick={openConnectModal}
+                >
+                  Connect Wallet
+                </button>
+              );
+            }}
+          </ConnectButton.Custom>
+        </div>
       )}
     </div>
   );
