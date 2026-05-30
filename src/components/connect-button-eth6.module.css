@@ -1,0 +1,129 @@
+.connectButton {
+  position: relative;
+  min-width: 178px;
+  border: 1px solid rgba(196, 181, 253, 0.42);
+  border-radius: 999px;
+  padding: 15px 26px;
+  overflow: hidden;
+  color: #f5f3ff;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(49, 19, 86, 0.96),
+      rgba(124, 58, 237, 0.78),
+      rgba(192, 132, 252, 0.5),
+      rgba(76, 29, 149, 0.96),
+      rgba(49, 19, 86, 0.96)
+    ),
+    #14081f;
+  background-size: 260% 260%;
+  box-shadow:
+    0 0 26px rgba(168, 85, 247, 0.34),
+    0 18px 48px rgba(76, 29, 149, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  animation: button-aurora 7s ease-in-out infinite;
+}
+
+.connectButton::before {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(233, 213, 255, 0.28),
+    transparent 52%
+  );
+}
+
+.connectButton::after {
+  position: absolute;
+  top: -40%;
+  left: -70%;
+  width: 55%;
+  height: 180%;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    rgba(216, 180, 254, 0.3),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: button-shine 4.8s ease-in-out infinite;
+}
+
+.connectButton:hover {
+  transform: translateY(-3px);
+  border-color: rgba(216, 180, 254, 0.72);
+  box-shadow:
+    0 0 38px rgba(192, 132, 252, 0.58),
+    0 22px 58px rgba(109, 40, 217, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.connectButton:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 0 24px rgba(168, 85, 247, 0.4),
+    0 12px 30px rgba(76, 29, 149, 0.36),
+    inset 0 2px 8px rgba(16, 4, 28, 0.55);
+}
+
+.connectButton:focus-visible {
+  outline: 3px solid rgba(216, 180, 254, 0.6);
+  outline-offset: 4px;
+}
+
+.connectButton:disabled {
+  cursor: default;
+  opacity: 0;
+}
+
+@keyframes button-aurora {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes button-shine {
+  0%,
+  38% {
+    left: -70%;
+    opacity: 0;
+  }
+
+  52% {
+    opacity: 1;
+  }
+
+  78%,
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectButton,
+  .connectButton::after {
+    animation: none;
+  }
+}

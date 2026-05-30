@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 
+import styles from "./connect-button-eth6.module.css";
+
 function formatEthBalance(value: bigint, decimals: number): string {
   const raw = formatUnits(value, decimals);
   const negative = raw.startsWith("-");
@@ -17,7 +19,7 @@ function formatEthBalance(value: bigint, decimals: number): string {
 
 export function ConnectButtonEth6() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { address, chainId } = useAccount();
+  const { address, chainId, isConnected } = useAccount();
   const { data: balance } = useBalance({ address, chainId });
 
   useEffect(() => {
@@ -46,13 +48,32 @@ export function ConnectButtonEth6() {
 
   return (
     <div ref={containerRef}>
-      <ConnectButton
-        accountStatus="full"
-        showBalance={{
-          smallScreen: true,
-          largeScreen: true,
-        }}
-      />
+      {isConnected ? (
+        <ConnectButton
+          accountStatus="full"
+          showBalance={{
+            smallScreen: true,
+            largeScreen: true,
+          }}
+        />
+      ) : (
+        <ConnectButton.Custom>
+          {({ mounted, authenticationStatus, openConnectModal }) => {
+            const ready = mounted && authenticationStatus !== "loading";
+
+            return (
+              <button
+                type="button"
+                className={styles.connectButton}
+                disabled={!ready}
+                onClick={openConnectModal}
+              >
+                Connect Wallet
+              </button>
+            );
+          }}
+        </ConnectButton.Custom>
+      )}
     </div>
   );
 }
