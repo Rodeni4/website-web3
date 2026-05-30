@@ -19,6 +19,16 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -27,6 +37,7 @@ body {
 
 .page {
   min-height: 100vh;
+  width: 100%;
   background: #000;
   display: flex;
 }
@@ -37,26 +48,113 @@ body {
 }
 
 .pageConnected {
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 90px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 90px 14px 28px;
 }
 
 .page .mintCard {
-  width: min(100% - 28px, 1200px);
-  height: 520px;
-  min-height: auto;
+  width: min(100%, 1100px);
+  height: 560px;
+  min-height: 560px;
+  max-height: 560px;
+  padding: 28px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 28px;
+}
 
+.page .mintCardLayout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+  justify-content: center;
+  gap: 28px;
+}
+
+.page .promoCard {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 82, 255, 0.45);
+  border-radius: 20px;
+  background: rgba(2, 8, 24, 0.88);
+  box-shadow: inset 0 0 28px rgba(0, 119, 255, 0.08);
+}
+
+/* правый блок с картинкой — без отступов, на весь контейнер */
+.page .mintCard > .promoCard + .promoCard {
+  padding: 0;
+}
+
+.page .promoCard--access {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0, 119, 255, 0.14), transparent 45%),
+    rgba(2, 8, 24, 0.92);
+}
+
+.page .promoCard--image {
+  padding: 12px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(0, 132, 255, 0.24), transparent 52%),
+    rgba(1, 6, 18, 0.95);
+}
+
+@media (max-width: 1100px) {
+  .pageConnected {
+    padding-top: 76px;
+  }
+
+  .page .mintCard {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page .mintCardLayout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page .promoCard {
+    width: min(100%, 500px);
+    max-width: 500px;
+    flex: none;
+    height: 460px;
+  }
 }
 
 @media (max-width: 768px) {
   .pageConnected {
     padding-top: 70px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .page .mintCard {
-    width: calc(100% - 28px);
-    height: 520px;
-    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .page .mintCardLayout {
+    gap: 16px;
+  }
+
+  .page .promoCard {
+    width: 100%;
+    height: min(92vw, 460px);
+    max-width: none;
   }
 }

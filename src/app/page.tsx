@@ -4,6 +4,7 @@ import { useAccount } from "wagmi";
 
 import { BaseContainer } from "@/components/base-container";
 import { ConnectButtonEth6 } from "@/components/connect-button-eth6";
+import { PromoImage } from "@/components/promo-image";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -14,7 +15,13 @@ export default function Home() {
 
       {isConnected && (
         <BaseContainer className="mintCard">
-          <div></div>
+          <BaseContainer className="promoCard">
+            <div></div>
+          </BaseContainer>
+
+          <BaseContainer className="promoCard" variant="clear">
+            <PromoImage src="/assets/mint-chest.png" alt="Сундук NFT" />
+          </BaseContainer>
         </BaseContainer>
       )}
     </main>
