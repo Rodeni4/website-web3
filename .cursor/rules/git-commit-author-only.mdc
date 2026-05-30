@@ -1,0 +1,14 @@
+---
+description: Git commits must not include co-author or contributor trailers
+alwaysApply: true
+---
+
+# Git commits — author only
+
+When creating or amending git commits:
+
+- **Never** add `Co-authored-by`, `Signed-off-by`, `Reviewed-by`, or similar contributor trailers to the commit message.
+- The commit message must contain only the subject and optional body (no attribution trailers).
+- Use only the repository author's identity from local git config (`user.name`, `user.email`).
+- Do not pass `--trailer` or any flag that adds co-authors or extra contributors.
+- Do not append Cursor, AI, or bot attribution lines to commit messages.
