@@ -1,9 +1,9 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ConnectButtonEth6 } from "@/components/connect-button-eth6";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen items-center justify-center">
-      <ConnectButton />
+      <ConnectButtonEth6 />
     </main>
   );
 }
