@@ -2,6 +2,7 @@
 
 import { useAccount } from "wagmi";
 
+import { AccessDeniedCard } from "@/components/access-denied-card";
 import { BaseContainer } from "@/components/base-container";
 import { ConnectButtonEth6 } from "@/components/connect-button-eth6";
 import { PromoImage } from "@/components/promo-image";
@@ -16,7 +17,7 @@ export default function Home() {
       {isConnected && (
         <BaseContainer className="mintCard">
           <BaseContainer className="promoCard">
-            <div></div>
+            <AccessDeniedCard />
           </BaseContainer>
 
           <BaseContainer className="promoCard" variant="clear">

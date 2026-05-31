@@ -1,0 +1,61 @@
+.label {
+  margin: 0;
+  color: #3d98ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: #f4f8ff;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.text {
+  margin: 0;
+  color: #9eb5df;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.button {
+  min-width: 180px;
+  height: 52px;
+  padding: 0 28px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #0c79ff 0%, #001dba 55%, #00105c 100%);
+  border: 2px solid #bd8b36;
+  border-radius: 999px;
+  box-shadow:
+    0 0 28px rgba(0, 119, 255, 0.85),
+    inset 0 0 20px rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 38px rgba(0, 132, 255, 1),
+    inset 0 0 24px rgba(255, 255, 255, 0.2);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+
