@@ -87,21 +87,21 @@ body {
   justify-content: stretch;
   padding: 20px;
   overflow: hidden;
- /* border: 1px solid rgba(0, 82, 255, 0.45); */
+  /* border: 1px solid rgba(0, 82, 255, 0.45); */
   border-radius: 20px;
   background: rgba(2, 8, 24, 0.88);
   box-shadow: inset 0 0 28px rgba(0, 119, 255, 0.08);
 }
 
 /* правый блок с картинкой — без отступов, на весь контейнер */
-.page .mintCard > .promoCard + .promoCard {
+.page .mintCard>.promoCard+.promoCard {
   padding: 0;
 }
 
 .page .promoCard--access {
   background:
-    radial-gradient(circle at 30% 20%, rgba(0, 119, 255, 0.14), transparent 45%),
-    rgba(2, 8, 24, 0.92);
+    radial-gradient(circle at 50% 20%, rgba(0, 82, 255, 0.26), transparent 46%),
+    rgba(2, 8, 24, 0.96);
 }
 
 .page .promoCard--image {
@@ -157,4 +157,62 @@ body {
     height: min(92vw, 460px);
     max-width: none;
   }
+}
+
+
+
+
+.mintModeTest__label {
+  color: #2f82ff;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 8px;
+}
+
+.mintModeTest__title {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.mintModeTest__button {
+  min-width: 180px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 82, 255, 0.8);
+  background: rgba(0, 82, 255, 0.2);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+
+
+.promoCard .mintModeTest {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+
+  border: 2px solid #0052ff;
+  border-radius: 20px;
+
+  box-shadow:
+    inset 0 0 28px rgba(0, 119, 255, 0.08),
+    0 0 32px rgba(0, 82, 255, 0.22);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+
+  padding: 48px;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 50% 20%, rgba(0, 82, 255, 0.26), transparent 46%),
+    rgba(2, 8, 24, 0.96);
 }

@@ -1,20 +1,14 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
-
+import type { ButtonHTMLAttributes } from "react";
 import styles from "./app-ui.module.css";
 
-type AppButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-};
+type AppButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function AppButton({
-  children,
-  className = "",
-  type = "button",
-  ...props
-}: AppButtonProps) {
+export function AppButton({ className = "", type = "button", ...props }: AppButtonProps) {
   return (
-    <button type={type} className={`${styles.button} ${className}`.trim()} {...props}>
-      {children}
-    </button>
+    <button
+      {...props}
+      type={type}
+      className={`${styles.button} ${className}`.trim()}
+    />
   );
 }
