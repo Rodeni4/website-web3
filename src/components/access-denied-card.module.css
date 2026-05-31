@@ -42,7 +42,7 @@
 
 .card__button {
   position: absolute;
-  left: 50%;
+  justify-self: center;
   bottom: calc(var(--mint-pass-btn-bottom, 52px) - var(--mint-flip-face-padding, 0px));
   z-index: 2;
 
@@ -50,7 +50,6 @@
   max-width: calc(100% - 40px);
   margin: 0;
 
-  transform: translateX(-50%);
 }
 
 @media (max-width: 560px) {
