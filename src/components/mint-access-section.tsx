@@ -11,27 +11,46 @@ export function MintAccessSection() {
 
   return (
     <>
-      <BaseContainer className="promoCard promoCard--access">
-        <AccessDeniedCard onMintClick={() => setIsMintMode(true)} />
+      <BaseContainer className="promoCard promoCard--access mintMoveCard">
+        <div
+          className={`mintMoveCardTrack ${
+            isMintMode ? "mintMoveCardTrack--active" : ""
+          }`}
+        >
+          <div
+            className={`mintFlipInner ${
+              isMintMode ? "mintFlipInner--active" : ""
+            }`}
+          >
+            <div className="mintFlipFace mintFlipFront">
+              <AccessDeniedCard onMintClick={() => setIsMintMode(true)} />
+            </div>
+
+            <div className="mintFlipFace mintFlipBack">
+              <div className="mintFlipBackContent">
+                <div className="mintFlipBackContent__label">MINT MODE</div>
+                <div className="mintFlipBackContent__title">Vault Pass Mint</div>
+
+                <button
+                  className="mintFlipBackContent__button"
+                  type="button"
+                  onClick={() => setIsMintMode(false)}
+                >
+                  BACK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </BaseContainer>
 
-      <BaseContainer className="promoCard" variant="clear">
-        {!isMintMode ? (
-          <PromoImage src="/assets/mint-chest.png" alt="Сундук NFT" />
-        ) : (
-          <div className="mintModeTest">
-            <div className="mintModeTest__label">MINT MODE</div>
-            <div className="mintModeTest__title">Vault Pass Mint</div>
-
-            <button
-              className="mintModeTest__button"
-              type="button"
-              onClick={() => setIsMintMode(false)}
-            >
-              BACK
-            </button>
-          </div>
-        )}
+      <BaseContainer
+        className={`promoCard mintChestCard ${
+          isMintMode ? "mintChestCard--hidden" : ""
+        }`}
+        variant="clear"
+      >
+        <PromoImage src="/assets/mint-chest.png" alt="Сундук NFT" />
       </BaseContainer>
     </>
   );
