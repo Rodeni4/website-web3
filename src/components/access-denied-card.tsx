@@ -5,11 +5,7 @@ import { AppTitle } from "@/components/ui/app-title";
 
 import styles from "./access-denied-card.module.css";
 
-type AccessDeniedCardProps = {
-  onMintClick?: () => void;
-};
-
-export function AccessDeniedCard({ onMintClick }: AccessDeniedCardProps) {
+export function AccessDeniedCard() {
   return (
     <div className={styles.card}>
       <AppLabel className={styles.card__label}>ACCESS LOCKED</AppLabel>
@@ -23,9 +19,7 @@ export function AccessDeniedCard({ onMintClick }: AccessDeniedCardProps) {
         </div>
       </div>
 
-      <AppButton className={styles.card__button} onClick={onMintClick}>
-        MINT VAULT PASS
-      </AppButton>
+      <AppButton className={styles.card__button}>MINT VAULT PASS</AppButton>
     </div>
   );
 }

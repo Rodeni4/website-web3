@@ -2,9 +2,10 @@
 
 import { useAccount } from "wagmi";
 
+import { AccessDeniedCard } from "@/components/access-denied-card";
 import { BaseContainer } from "@/components/base-container";
 import { ConnectButtonEth6 } from "@/components/connect-button-eth6";
-import { MintStage } from "@/components/mint-stage";
+import { PromoImage } from "@/components/promo-image";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -15,7 +16,13 @@ export default function Home() {
 
       {isConnected && (
         <BaseContainer className="mintCard">
-          <MintStage />
+          <BaseContainer className="promoCard">
+            <AccessDeniedCard />
+          </BaseContainer>
+
+          <BaseContainer className="promoCard" variant="clear">
+            <PromoImage src="/assets/mint-chest.png" alt="Сундук NFT" />
+          </BaseContainer>
         </BaseContainer>
       )}
     </main>
