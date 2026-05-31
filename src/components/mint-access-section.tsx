@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AccessDeniedCard } from "@/components/access-denied-card";
 import { BaseContainer } from "@/components/base-container";
 import { PromoImage } from "@/components/promo-image";
+import { AppButton } from "@/components/ui/app-button";
 
 export function MintAccessSection() {
   const [isMintMode, setIsMintMode] = useState(false);
@@ -12,16 +13,20 @@ export function MintAccessSection() {
   return (
     <>
       <BaseContainer className="promoCard promoCard--access mintMoveCard">
-        <div
-          className={`mintMoveCardTrack ${
-            isMintMode ? "mintMoveCardTrack--active" : ""
-          }`}
-        >
-          <div
-            className={`mintFlipInner ${
-              isMintMode ? "mintFlipInner--active" : ""
-            }`}
-          >
+        <div className={`mintNftPreview ${isMintMode ? "mintNftPreview--visible" : ""}`}>
+          <div className="mintNftPreview__imageWrap">
+            <img
+              className="mintNftPreview__image"
+              src="/assets/vault-pass-nft.gif"
+              alt="Vault Pass NFT"
+            />
+          </div>
+
+          <div className="mintNftPreview__label">VAULT PASS NFT</div>
+        </div>
+
+        <div className={`mintMoveCardTrack ${isMintMode ? "mintMoveCardTrack--active" : ""}`}>
+          <div className={`mintFlipInner ${isMintMode ? "mintFlipInner--active" : ""}`}>
             <div className="mintFlipFace mintFlipFront">
               <AccessDeniedCard onMintClick={() => setIsMintMode(true)} />
             </div>
@@ -31,13 +36,13 @@ export function MintAccessSection() {
                 <div className="mintFlipBackContent__label">MINT MODE</div>
                 <div className="mintFlipBackContent__title">Vault Pass Mint</div>
 
-                <button
+                <AppButton
                   className="mintFlipBackContent__button"
                   type="button"
                   onClick={() => setIsMintMode(false)}
                 >
                   BACK
-                </button>
+                </AppButton>
               </div>
             </div>
           </div>
@@ -45,9 +50,7 @@ export function MintAccessSection() {
       </BaseContainer>
 
       <BaseContainer
-        className={`promoCard mintChestCard ${
-          isMintMode ? "mintChestCard--hidden" : ""
-        }`}
+        className={`promoCard mintChestCard ${isMintMode ? "mintChestCard--hidden" : ""}`}
         variant="clear"
       >
         <PromoImage src="/assets/mint-chest.png" alt="Сундук NFT" />
