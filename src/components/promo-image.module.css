@@ -27,6 +27,15 @@
   pointer-events: none;
 
   background:
-    radial-gradient(circle at 50% 45%, transparent 44%, rgba(2, 8, 23, 0.3) 68%, rgba(2, 8, 23, 0.95) 100%),
-    linear-gradient(180deg, rgba(2, 8, 23, 0.16), rgba(2, 8, 23, 0.42));
+    radial-gradient(
+      circle at 50% 45%,
+      transparent 44%,
+      rgba(2, 8, 23, 0.3) 68%,
+      rgba(2, 8, 23, 0.95) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 23, 0.16),
+      rgba(2, 8, 23, 0.42)
+    );
 }

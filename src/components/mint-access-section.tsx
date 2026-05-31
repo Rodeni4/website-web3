@@ -9,7 +9,6 @@ import { AppButton } from "@/components/ui/app-button";
 
 const PRICE_ETH = 0.0025;
 const SUPPLY_TOTAL = 200_000;
-const MINTED = 0;
 
 function formatEth(value: number) {
   return `${value.toFixed(4)} ETH`;
@@ -18,16 +17,30 @@ function formatEth(value: number) {
 export function MintAccessSection() {
   const [isMintMode, setIsMintMode] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [mintedCount, setMintedCount] = useState(0);
 
   const totalEth = quantity * PRICE_ETH;
-  const progressPercent = (MINTED / SUPPLY_TOTAL) * 100;
+  const progressPercent = (mintedCount / SUPPLY_TOTAL) * 100;
+  const isSoldOut = mintedCount >= SUPPLY_TOTAL;
 
   const decreaseQuantity = () => {
     setQuantity((current) => Math.max(1, current - 1));
   };
 
   const increaseQuantity = () => {
-    setQuantity((current) => current + 1);
+    setQuantity((current) => {
+      const remaining = SUPPLY_TOTAL - mintedCount;
+      if (remaining <= 0) {
+        return current;
+      }
+      return Math.min(current + 1, remaining);
+    });
+  };
+
+  const handleMintDemo = () => {
+    console.log("mint");
+    setMintedCount((current) => Math.min(SUPPLY_TOTAL, current + quantity));
+    setQuantity(1);
   };
 
   return (
@@ -37,12 +50,21 @@ export function MintAccessSection() {
           <div className="mintNftPreview__imageWrap">
             <img
               className="mintNftPreview__image"
-              src="/assets/vault-pass-nft.gif"
+              src="/assets/vault-pass-nft.png"
               alt="Vault Pass NFT"
             />
           </div>
 
-          <div className="mintNftPreview__label">VAULT PASS NFT</div>
+          <div className="mintNftPreview__buttonWrap">
+            <AppButton
+              className="mintNftPreview__button"
+              type="button"
+              onClick={handleMintDemo}
+              disabled={isSoldOut}
+            >
+              MINT VAULT PASS
+            </AppButton>
+          </div>
         </div>
 
         <div className={`mintMoveCardTrack ${isMintMode ? "mintMoveCardTrack--active" : ""}`}>
@@ -69,7 +91,8 @@ export function MintAccessSection() {
                   <div className="mintPanel__row">
                     <span className="mintPanel__rowLabel">Minted</span>
                     <span className="mintPanel__rowValue">
-                      {MINTED.toLocaleString("en-US")} / {SUPPLY_TOTAL.toLocaleString("en-US")}
+                      {mintedCount.toLocaleString("en-US")} /{" "}
+                      {SUPPLY_TOTAL.toLocaleString("en-US")}
                     </span>
                   </div>
 
@@ -98,6 +121,7 @@ export function MintAccessSection() {
                         className="mintPanel__quantityBtn"
                         onClick={decreaseQuantity}
                         aria-label="Decrease quantity"
+                        disabled={isSoldOut}
                       >
                         −
                       </button>
@@ -107,6 +131,7 @@ export function MintAccessSection() {
                         className="mintPanel__quantityBtn"
                         onClick={increaseQuantity}
                         aria-label="Increase quantity"
+                        disabled={isSoldOut || quantity >= SUPPLY_TOTAL - mintedCount}
                       >
                         +
                       </button>
@@ -120,12 +145,9 @@ export function MintAccessSection() {
                 </div>
 
                 <div className="mintPanel__actions">
-                  <AppButton className="mintPanel__mintBtn" type="button">
-                    MINT VAULT PASS
-                  </AppButton>
                   <button
+                    className="mintPanelBackLink"
                     type="button"
-                    className="mintPanel__back"
                     onClick={() => setIsMintMode(false)}
                   >
                     ← Back

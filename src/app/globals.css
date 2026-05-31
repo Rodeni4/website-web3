@@ -479,12 +479,7 @@ body {
   margin-top: auto;
 }
 
-.mintPanel__mintBtn {
-  width: 100%;
-  max-width: 320px;
-}
-
-.mintPanel__back {
+.mintPanelBackLink {
   margin: 0;
   padding: 4px 8px;
 
@@ -501,7 +496,7 @@ body {
   transition: color 180ms ease, text-shadow 180ms ease;
 }
 
-.mintPanel__back:hover {
+.mintPanelBackLink:hover {
   color: #ffffff;
   text-shadow: 0 0 14px rgba(0, 119, 255, 0.45);
 }
@@ -548,10 +543,6 @@ body {
   .mintPanel__rowValue {
     font-size: 13px;
   }
-
-  .mintPanel__mintBtn {
-    max-width: 100%;
-  }
 }
 
 
@@ -564,13 +555,8 @@ body {
   inset: 0;
   z-index: 1;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-
-  padding: 28px;
+  display: block;
+  padding: 0;
 
   border: 2px solid #0052ff;
   border-radius: 20px;
@@ -584,33 +570,34 @@ body {
     inset 0 0 28px rgba(0, 119, 255, 0.08);
 
   opacity: 0;
-  transform: scale(0.92);
-  filter: blur(10px);
+  transform: scale(1);
+  filter: none;
 
+  overflow: hidden;
   pointer-events: none;
 
   transition:
-    opacity 620ms ease,
-    transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 620ms ease;
+    opacity 420ms ease;
 }
 
 .mintNftPreview--visible {
   opacity: 1;
   transform: scale(1);
   filter: blur(0);
+  pointer-events: auto;
 }
 
 .mintNftPreview__imageWrap {
-  width: min(86%, 360px);
-  aspect-ratio: 1 / 1;
+  position: absolute;
+  inset: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
 
-  overflow: visible;
+  display: block;
 
+  overflow: hidden;
   background: transparent;
   box-shadow: none;
 }
@@ -618,33 +605,34 @@ body {
 .mintNftPreview__image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center 38%;
   display: block;
 
   filter:
-    drop-shadow(0 0 24px rgba(0, 82, 255, 0.45))
-    drop-shadow(0 0 52px rgba(0, 82, 255, 0.22));
-
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    #000 48%,
-    rgba(0, 0, 0, 0.85) 58%,
-    rgba(0, 0, 0, 0.35) 70%,
-    transparent 82%
-  );
-  mask-image: radial-gradient(
-    ellipse at center,
-    #000 48%,
-    rgba(0, 0, 0, 0.85) 58%,
-    rgba(0, 0, 0, 0.35) 70%,
-    transparent 82%
-  );
+    brightness(0.78)
+    saturate(1.04)
+    contrast(1.06)
+    drop-shadow(0 0 20px rgba(0, 82, 255, 0.38))
+    drop-shadow(0 0 42px rgba(0, 82, 255, 0.18));
 }
 
-.mintNftPreview__label {
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 5px;
-  opacity: 0.82;
+
+
+.mintNftPreview__buttonWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  pointer-events: auto;
+}
+
+.mintNftPreview__button {
+  width: min(100%, 360px);
+  min-height: 58px;
 }
