@@ -1,24 +1,80 @@
 .card {
-  display: flex;
   width: 100%;
   height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
 
-  padding: 54px 46px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  padding: 56px 52px;
+  text-align: center;
+}
+
+.card__label {
+  align-self: start;
+  justify-self: center;
+}
+
+.card__content {
+  align-self: center;
+  justify-self: center;
+
+  width: 100%;
+  max-width: 460px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card__textGroup {
+  width: 100%;
+  max-width: 430px;
+
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 
-  max-width: 390px;
-  margin-top: 4px;
+  margin-top: 28px;
 }
 
 .card__button {
-  margin-top: 34px;
-  align-self: flex-start;
+  align-self: end;
+  justify-self: center;
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 28px 18px 34px;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .card__label {
+    align-self: start;
+    justify-self: center;
+  }
+
+  .card__content {
+    align-self: start;
+    justify-self: center;
+
+    width: 100%;
+    max-width: 310px;
+
+    margin-top: 34px;
+  }
+
+  .card__textGroup {
+    width: 100%;
+    max-width: 310px;
+
+    margin-top: 22px;
+    gap: 14px;
+  }
+
+  .card__button {
+    align-self: end;
+    justify-self: center;
+
+    margin-bottom: 24px;
+  }
 }

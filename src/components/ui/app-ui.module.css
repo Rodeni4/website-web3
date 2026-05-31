@@ -1,56 +1,84 @@
 .label {
   margin: 0;
+
   color: #3d98ff;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  opacity: 1;
+  font-weight: 900;
   line-height: 1.2;
   text-transform: uppercase;
+
+  text-shadow: 0 0 18px rgba(0, 82, 255, 0.55);
 }
 
 .title {
   margin: 0;
+
   color: #f4f8ff;
-  font-size: clamp(28px, 3vw, 36px);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
+
+  font-size: 44px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1;
+
+  text-shadow:
+    0 0 22px rgba(0, 82, 255, 0.28),
+    0 3px 0 rgba(0, 0, 0, 0.45);
 }
 
 .text {
   margin: 0;
-  color: #9eb5df;
-  font-size: 15px;
+
+  color: rgba(198, 219, 255, 0.82);
+
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.55;
 }
 
 .button {
-  min-width: 180px;
-  height: 52px;
-  padding: 0 28px;
+  min-width: 280px;
+  height: 60px;
+  padding: 0 34px;
+
   color: #ffffff;
-  background: linear-gradient(180deg, #0c79ff 0%, #001dba 55%, #00105c 100%);
+
+  background:
+    linear-gradient(180deg, #1d7cff 0%, #0038e8 52%, #00136f 100%);
+
   border: 2px solid #bd8b36;
   border-radius: 999px;
+
   box-shadow:
-    0 0 28px rgba(0, 119, 255, 0.85),
+    0 0 28px rgba(0, 119, 255, 0.75),
+    0 0 64px rgba(0, 82, 255, 0.32),
     inset 0 0 20px rgba(255, 255, 255, 0.16);
+
   cursor: pointer;
+
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0.18em;
   line-height: 1;
   text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+
   transition:
     transform 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    filter 180ms ease;
 }
 
 .button:hover {
   transform: translateY(-2px);
+  filter: brightness(1.08);
+
   box-shadow:
-    0 0 38px rgba(0, 132, 255, 1),
+    0 0 40px rgba(0, 132, 255, 0.95),
+    0 0 78px rgba(0, 82, 255, 0.42),
     inset 0 0 24px rgba(255, 255, 255, 0.2);
 }
 
@@ -58,4 +86,30 @@
   transform: translateY(1px);
 }
 
+@media (max-width: 560px) {
+  .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
 
+.title {
+  font-size: 30px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+  .text {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .button {
+    min-width: 220px;
+    height: 46px;
+    padding: 0 22px;
+
+    font-size: 12px;
+    letter-spacing: 0.16em;
+  }
+}

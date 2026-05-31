@@ -8,15 +8,18 @@ import styles from "./access-denied-card.module.css";
 export function AccessDeniedCard() {
   return (
     <div className={styles.card}>
-      <AppLabel>ACCESS DENIED</AppLabel>
-      <AppTitle>Пропуск не найден</AppTitle>
+      <AppLabel className={styles.card__label}>ACCESS LOCKED</AppLabel>
 
-      <div className={styles.card__textGroup}>
-        <AppText>Этот раздел доступен только владельцам Vault Pass.</AppText>
-        <AppText>Сминть NFT-пропуск, чтобы открыть доступ.</AppText>
+      <div className={styles.card__content}>
+        <AppTitle>Mint Required</AppTitle>
+
+        <div className={styles.card__textGroup}>
+          <AppText>You need a Vault Pass NFT to enter this area.</AppText>
+          <AppText>Mint your Vault Pass and unlock access.</AppText>
+        </div>
       </div>
 
-      <AppButton className={styles.card__button}>МИНТ</AppButton>
+      <AppButton className={styles.card__button}>MINT VAULT PASS</AppButton>
     </div>
   );
 }
